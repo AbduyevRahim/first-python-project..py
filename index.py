@@ -495,36 +495,36 @@ else:
 					print("Code is rejected")
 					exit()
 if not d.isdecimal() and d.isascii():
-		print("Invalid payment")
+	print("Invalid payment")
 else:
 	print(f"Payment= {d} AZN")
 	if b<=18 and b>=16:
-		   d=int(d)
-		   if c=="PY":
-		   	if d<(30-(d*20/100)):
-		   		print("Expected= Insufficient payment")
-		   	else:
-		   		print("Expected= Registration confirmed")
-		   		print(f"Discount= {d*20/100} AZN")
-		   		print(f"Final fee= {30-(d*20/100)} AZN")
-		   		print(f"Change= {30-(30-(d*20/100))} AZN")
-		   elif c=="WEB":
-		   	if d<(40-(d*20/100)):
-		   		print("Expected= Insufficient payment")
-		   	else:
-		   		print("Expected= Registration confirmed")
-		   		print(f"Discount= {d*20/100} AZN")
-		   		print(f"Final fee= {40-(d*20/100)} AZN")
-		   		print(f"Change= {40-(40-(d*20/100))} AZN")
-		   elif c=="CY":
-		   	if b==18:
-		   		if d<(50-(d*20/100)):
-		   			print("Expected= Insufficient payment")
-		   		else:
-		   			print("Expected= Registration confirmed")
-		   			print(f"Discount= {d*20/100} AZN")
-		   			print(f"Final fee= {50-(d*20/100)} AZN")
-		   			print(f"Change= {50-(50-(d*20/100))} AZN")
-		   	else:
-		   		print("Invalid age")
+		d=int(d)
+		if c=="PY":
+			if d<(30-(d*20/100)):
+				print("Expected= Insufficient payment")
+			else:
+				print("Expected= Registration confirmed")
+				print(f"Discount= {d*20/100} AZN")
+				print(f"Final fee= {30-(d*20/100)} AZN")
+				print(f"Change= {30-(30-(d*20/100))} AZN")
+		elif c=="WEB":
+			if d<(40-(d*20/100)):
+				print("Expected= Insufficient payment")
+			else:
+				print("Expected= Registration confirmed")
+				print(f"Discount= {d*20/100} AZN")
+				print(f"Final fee= {40-(d*20/100)} AZN")
+				print(f"Change= {40-(40-(d*20/100))} AZN")
+		elif c=="CY":
+			if b==18:
+				if d<(50-(d*20/100)):
+					print("Expected= Insufficient payment")
+				else:
+					print("Expected= Registration confirmed")
+					print(f"Discount= {d*20/100} AZN")
+					print(f"Final fee= {50-(d*20/100)} AZN")
+					print(f"Change= {50-(50-(d*20/100))} AZN")
+			else:
+				print("Invalid age")
 
