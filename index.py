@@ -125,13 +125,13 @@ if a < 100:
     print("no discount")
 elif a <= 299 and a >= 100:
     b = a * 10 / 100
-    print("you got 10% discount. Discount amount", b, "AZN. Result", a - b, "AZN")
+    print(f"you got 10% discount. Discount amount: {b} AZN. Result: {a - b} AZN")
 elif a <= 499 and a >= 300:
     b = a * 15 / 100
-    print("you got 15% discount. Discount amount", b, "AZN. Result", a - b, "AZN")
+    print(f"you got 15% discount. Discount amount: {b} AZN. Result: {a - b} AZN")
 else:
     b = a * 20 / 100
-    print("you got 20% discount. Discount amount", b, "AZN. Result", a - b, "AZN")
+    print(f"you got 20% discount. Discount amount: {b} AZN. Result: {a - b} AZN")
 
 
 
@@ -141,23 +141,23 @@ b = int(input())
 c = int(input())
 if a > b and a > c:
     if b > c and b != c:
-        print("the largest number is", a, "and the smallest is", c)
+        print(f"the largest number is {a} and the smallest is {c}")
     elif c > b and c != b:
-        print("the largest number is", a, "and the smallest is", b)
+        print(f"the largest number is {a} and the smallest is {b}")
     else:
         print("the largest and smallest numbers aren't exist or some of them are equal")
 elif b > a and b > c:
     if a > c and a != c:
-        print("the largest number is", b, "and the smallest is", c)
+        print(f"the largest number is {b} and the smallest is {c}")
     elif c > a and c != a:
-        print("the largest number is", b, "and the smallest is", a)
+        print(f"the largest number is {b} and the smallest is {a}")
     else:
         print("the largest and smallest numbers aren't exist or some of them are equal")
 else:
     if b > a and b != a:
-        print("the largest number is", c, "and smallest number is", a)
+        print(f"the largest number is {c} and the smallest number is {a}")
     elif a > b and a != b:
-        print("the largest number is", c, "and smallest number is", b)
+        print(f"the largest number is {c} and the smallest number is {b}")
     else:
         print("the largest and smallest numbers aren't exist or some of them are equal")
 
@@ -172,7 +172,7 @@ elif b > a:
     print("Insufficient balance")
 else:
     c = a - b
-    print("remain amount=", c)
+    print(f"remain amount: {c} AZN")
 
 
 
@@ -180,13 +180,13 @@ else:
 a = float(input("include your monthly electricity usage"))
 if a <= 100 and a >= 0:
     b = a * 0.08
-    print("usage:", a, "kWh Applied rate: 0.08 AZN Total bill:", b, "AZN")
+    print(f"usage: {a} kWh Applied rate: 0.08 AZN Total bill: {b} AZN")
 elif a <= 300 and a >= 101:
     b = a * 0.12
-    print("usage:", a, "kWh Applied rate: 0.12 AZN Total bill:", b, "AZN")
+    print(f"usage: {a} kWh Applied rate: 0.12 AZN Total bill: {b} AZN")
 elif a > 300:
     b = a * 0.15
-    print("usage:", a, "kWh Applied rate: 0.15 AZN Total bill:", b, "AZN")
+    print(f"usage: {a} kWh Applied rate: 0.15 AZN Total bill: {b} AZN")
 else:
     print("invalid input")
 
@@ -197,13 +197,13 @@ a = 2.0
 b = float(input("include your distance with km "))
 if b <= 5 and b >= 0:
     c = b * 0.70
-    print("starting fee:2 AZN Distance fee:", c, "AZN/km Total amount:", a + c, "AZN")
+    print(f"starting fee: 2 AZN Distance fee: {c} AZN/km Total amount: {a + c} AZN")
 elif b <= 15 and b >= 5:
     c = b * 0.60
-    print("starting fee:2 AZN Distance fee:", c, "AZN/km Total amount:", a + c, "AZN")
+    print(f"starting fee: 2 AZN Distance fee: {c} AZN/km Total amount: {a + c} AZN")
 elif b > 15:
     c = b * 0.50
-    print("starting fee:2 AZN Distance fee:", c, "AZN/km Total amount:", a + c, "AZN")
+    print(f"starting fee: 2 AZN Distance fee: {c} AZN/km Total amount: {a + c} AZN")
 else:
     print("invalid fee")
 
@@ -294,7 +294,7 @@ b=input("membership answer (yes or no): ")
 if b!="no" and b!="yes" or a<0:
 	print("delivery is rejected")
 else:
-	x=(f"delivery is free, total amount is {a} AZN") if a<50 or b=="yes" else (f"delivery cost is 5 AZN, total amount is {a+5} AZN")
+	x=(f"delivery is free, total amount is {a} AZN") if a>=50 or b=="yes" else (f"delivery cost is 5 AZN, total amount is {a+5} AZN")
 	print(x)
 
    
@@ -303,45 +303,60 @@ else:
 day=int(input("include day "))
 match day:
 	case 1:
-		print("Monday, studyday")
+		x="Monday"
+		y="Workday"
 	case 2:
-		print("Tuesday, studyday")
+		x="Tuesday"
+		y="Workday"
 	case 3:
-		print("Wednesday, studyday")
+		x="Wednesday"
+		y="Workday"
 	case 4:
-		print("Thursday, studyday")
+		x="Thursday"
+		y="Workday"
 	case 5:
-		print("Friday, studyday")
+		x="Friday"
+		y="Workday"
 	case 6:
-		print("Saturday, weekend")
+		x="Saturday"
+		y="Weekend"
 	case 7:
-		print("Sunday, weekend")
+		x="Sunday"
+		y="Weekend"
 	case _:
-		print("invalid day")
+		x="Invalid day"
+		y=" "
+print(f"Day:{x} Day type:{y}")
 
 
 
-  #task 19
+# task 19
 a = input("include drink code: T = Tea (2 AZN), C = Coffee (4 AZN), J = Juice (3 AZN): ")
+a = a.upper()
 b = int(input("include drink quantity(1-10): "))
-if b>10 or b<=0:
+if b > 10 or b <= 0:
     print("invalid")
 else:
     match a:
         case "T":
-            x = "larger order" if 2 * b > 20 else "regular order"
-            print(f"Tea, Quantity:{b}, Total:{b * 2}AZN")
-            print(x)
+            x = "Tea"
+            fee = 2
         case "C":
-            print(f"Coffee, Quantity:{b}, Total:{b * 4}AZN")
-            x = "larger order" if 4 * b > 20 else "regular order"
-            print(x)
+            x = "Coffee"
+            fee = 4
         case "J":
-            print(f"Juice, Quantity:{b}, Total:{b * 3}AZN")
-            x = "larger order" if 3 * b > 20 else "regular order"
-            print(x)
+            x = "Juice"
+            fee = 3
         case _:
             print("invalid")
+            exit()
+    t = fee * b
+    n = "Large order" if t >= 20 else "Regular order"
+    print(f"Drink: {x}")
+    print(f"Quantity: {b}")
+    print(f"Total: {t} AZN")
+    print(n)
+    
 
 
 
@@ -414,7 +429,7 @@ elif a==Pin:
 		if int(x)+int(b)>1000:
 			print("application is rejected")
 		else:
-			print(f"withdrawal amount:, {int(b)}, fee service:, {x}, new balance:, {1000-(int(b)+int(x))}")
+			print(f"Withdrawal amount:{int(b)} Fee service:{x} New balance:{1000-(int(b)+int(x))}")
 else:
 	print("your PIN is incorrect")
 
@@ -473,58 +488,48 @@ c=input("include your workshop code(PY=Python(min age 16), WEB=WEB development(m
 d=input("include payment amount: ")
 if not (a.isdecimal() and a.isascii()) or len(a)!=8:
 	print("Your ID is incorrect")
+	exit()
 else:
-	print("Your ID is correct")
+	print(f"Your ID is correct")
 	if not (b.isdecimal() and b.isascii()):
 		print("Your age is invalid")
+		exit()
 	else:
 		b=int(b)
 		if not (b>=16 and b<=65):
 			print("Invalid age")
+			exit()
 		else:
-			print(f"age: {b}")
 			match c:
 				case "PY":
-					print("Workshop= PY")
+					fee=30
+					x="Python"
 				case "WEB":
-					print("Workshop= WEB")				
+					x="WEB development"
+					fee=40				
 				case "CY":
-					x="your age isn't enough" if b<18 else "Workshop= CY"
-					print(x)		
+					if b<18:
+						print("your age isn't enough for this work")
+						exit()
+					else:
+						x="Cyber Security"
+					fee=50		
 				case _:
-					print("Code is rejected")
+					print("Workshop code is wrong")
 					exit()
-if not d.isdecimal() and d.isascii():
+if not (d.isdecimal() and d.isascii()):
 	print("Invalid payment")
-else:
-	print(f"Payment= {d} AZN")
-	if b<=18 and b>=16:
-		d=int(d)
-		if c=="PY":
-			if d<(30-(d*20/100)):
-				print("Expected= Insufficient payment")
-			else:
-				print("Expected= Registration confirmed")
-				print(f"Discount= {d*20/100} AZN")
-				print(f"Final fee= {30-(d*20/100)} AZN")
-				print(f"Change= {30-(30-(d*20/100))} AZN")
-		elif c=="WEB":
-			if d<(40-(d*20/100)):
-				print("Expected= Insufficient payment")
-			else:
-				print("Expected= Registration confirmed")
-				print(f"Discount= {d*20/100} AZN")
-				print(f"Final fee= {40-(d*20/100)} AZN")
-				print(f"Change= {40-(40-(d*20/100))} AZN")
-		elif c=="CY":
-			if b==18:
-				if d<(50-(d*20/100)):
-					print("Expected= Insufficient payment")
-				else:
-					print("Expected= Registration confirmed")
-					print(f"Discount= {d*20/100} AZN")
-					print(f"Final fee= {50-(d*20/100)} AZN")
-					print(f"Change= {50-(50-(d*20/100))} AZN")
-			else:
-				print("Invalid age")
-
+	exit()
+else:	
+	discount= fee*0.2 if b>=16 and b<=18 else 0.0
+	df=fee-discount   #df is discounted fee 
+	if df>int(d):
+		print("Insufficient payment")
+	else:
+		print("Registration confirmed")
+		print(f"ID={a}")
+		print(f"Workshop={x}")
+		print(f"Payment={d} AZN")
+		print(f"Discount={discount} AZN")
+		print(f"Final fee={df} AZN")
+		print(f"Change={int(d)-df} AZN")
