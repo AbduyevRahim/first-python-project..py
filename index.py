@@ -436,48 +436,61 @@ else:
 
 
 #task 24
-a=input("include product code you can use:K = Keyboard (40 AZN), M = Mouse (20 AZN), H = Headphones (60 AZN): ")
-b=input("include quantitiy(that must be (1-5)): ")
-c=input("include cupon code(SAVE10 or NONE): ")
-d=input("include delivery code(P = Pickup (free), S = Standard): ")
-match a:
+pc=input("include product code (K = Keyboard (40 AZN), M = Mouse (20 AZN), H = Headphones (60 AZN)): ") #pc is product code
+q=(input("include quantity (1-5): ")) #q is quantity
+cc=input("include coupon code (NONE or SAVE10): ") #cc is coupon code 
+dc=input("P = Pickup (free), S = Standard: ") #dc is delivery code
+pc=pc.upper()
+cc=cc.upper()
+dc=dc.upper()
+match pc:
 	case "K":
-		s=40*int(b) #s is subtotal
-		print(f"product: Keyboard (40AZN). Subtotal: {40*int(b)} AZN")
+		x="Keyboard"
+		fee=40
 	case "M":
-		s=20*int(b)
-		print(f"product: Mouse (20AZN). Subtotal: {20*int(b)} AZN")
+		x="Mouse"
+		fee=20
 	case "H":
-		s=60*int(b)
-		print(f"product: Headphones(60AZN). Subtotal: {60*int(b)} AZN")
+		x="Headphones"
+		fee=60
 	case _:
-		print("invalid product")
+		print("invalid product code")
 		exit()
-if not (b.isdecimal() and b.isascii()) or len(b)==0:
-	print("only one digit and you can use")
-	exit()
-elif not (int(b)<=5 and int(b)>=1):
-	print("you can use one digit between 1-5")
-	exit()	
-elif c=="SAVE10"or c=="NONE":
-	if c=="SAVE10" and s>=100:
-		ds=s-(s*10/100) #ds is discounted subtotal
-		print(f"Kupon: SAVE10. Discount: {s*10/100} AZN. Subtotal: {ds} AZN")
-	else:
-		ds=s
-		print("Discount is none")
+if len(q)==0:
+	print("Quantity cannot be empty")
+elif not (q.isdecimal() and q.isascii()):
+	print("Quantity must contain only digits")
+elif (int(q)<1 or int(q)>5):
+	print("Quantity must be between 1-5")
 else:
-	print("Invalid cupon code")
-	exit()
-match d:
-	case "P":
-		print("Delivery code: Pickup. Delivery is free")
-	case "S":
-		x=(f"Delivery code: Standart. Delivery: 5 AZN. Subtotal:{ds+5} AZN") if ds<80 else ("Delivery code: Standart. Delivery is free")
-		print(x)
-	case _:
-		print("Invalid delivery code")
-		exit()
+	q=int(q)
+	if len(cc)==0:
+		print("Coupon code cannot be empty")
+	elif not (cc=="SAVE10" or cc=="NONE"):
+		print("Coupon code must be SAVE10 or NONE")
+	else:
+		s=fee*q #s is subtotal
+		if cc=="SAVE10" and s>=100:
+			d=s*0.1 #d is discount
+			ds=s-d #ds is discounted subtotal
+		else:
+			d=0
+			ds=s
+		match dc:
+			case "P":
+				df=0
+			case "S":
+				df=0 if ds>=80 else 5
+			case _:
+				print("invalid delivery code")
+				exit()
+		ft=ds+df #ft is final total				
+		print(f"Product={x}")
+		print(f"Quantity={q}")
+		print(f"Subtotal={s} AZN")
+		print(f"Discount={d} AZN")
+		print(f"Delivery fee={df} AZN")
+		print(f"Final total={ft} AZN")
 
 
 
